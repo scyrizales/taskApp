@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-xs-6">
+        <h4>Task</h4>
+    </div>
+    <div class="col-xs-2">
+        <h4 ng-click="predicate = 'dueDate'; reverse=!reverse">
+            Due Date
+            <span ng-show="predicate == 'dueDate'">
+                <span class="glyphicon glyphicon-chevron-up" ng-hide="reverse"></span>
+                <span class="glyphicon glyphicon-chevron-down" ng-show="reverse"></span>
+            </span>
+        </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4 ng-click="predicate = 'priority'; reverse=!reverse">
+            Priority
+            <span ng-show="predicate == 'priority'">
+                <span class="glyphicon glyphicon-chevron-up" ng-show="reverse"></span>
+                <span class="glyphicon glyphicon-chevron-down" ng-hide="reverse"></span>
+            </span>
+        </h4>
+    </div>
+</div>
+<div class="row" data-ng-repeat="t in tasks | orderBy:predicate:reverse" data-ng-class="{done: t.done}">
+    <div class="col-xs-6">
+        <input class="pull-left" type="checkbox" data-ng-checked="t.done" data-ng-model="t.done">
+        <editable-text model="t.description"></editable-text>
+    </div>
+    <div class="col-xs-2">
+        <editable-date model="t.dueDate"></editable-date>
+    </div>
+    <div class="col-xs-2">
+        <select class="btn" data-ng-model="t.priority" priority="">
+            <option data-ng-repeat="p in priorities" ng-value="$index" ng-bind="p"></option>
+        </select>
+    </div>
+    <div>
+        <button class="btn btn-danger" data-ng-click="remove($index)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+</div>
+<form class="row" class="form">
+    <div class="col-xs-6">
+        <input class="form-control" type="text" ng-model="newTask.description">
+    </div>
+    <div class="col-xs-2">
+        <input class="form-control" type="date" ng-model="newTask.dueDate">
+    </div>
+    <div class="col-xs-2">
+        <select class="btn" data-ng-model="newTask.priority" priority="">
+            <option data-ng-repeat="p in priorities" value="{{$index}}" ng-bind="p"></option>
+        </select>
+    </div>
+    <div>
+        <button class="btn btn-success" data-ng-click="add()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+</form>

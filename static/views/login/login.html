@@ -1,0 +1,19 @@
+<form class="form-horizontal" role="form" ng-submit="login(frm)">
+  <div class="form-group">
+    <label for="user" class="col-xs-2 control-label">User</label>
+    <div class="col-xs-10">
+      <input type="text" class="form-control" ng-model="frm.user" id="user" placeholder="User">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-xs-2 control-label">Password</label>
+    <div class="col-xs-10">
+      <input type="password" class="form-control" ng-model="frm.password" id="password" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>

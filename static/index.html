@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.cerulean.min.css">
+    <script src="scripts/vendor/jquery-1.10.2.min.js"></script>
+    <script src="scripts/vendor/angular.min.js"></script>
+    <script src="scripts/vendor/angular-route.min.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/login/loginInit.js"></script>
+    <script src="scripts/login/loginService.js"></script>
+    <script src="scripts/login/loginControllers.js"></script>
+    <script src="scripts/tasks/taskInit.js"></script>
+    <script src="scripts/tasks/taskService.js"></script>
+    <script src="scripts/tasks/taskDirectives.js"></script>
+    <script src="scripts/tasks/taskController.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+<body data-ng-app="tasksApp" ng-controller="AppCtrl">
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">Tasks App</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li data-ng-repeat="menu in menus" data-ng-class="{active: isActive(menu.href)}">
+                <a class="text-center" ng-href="#/{{menu.href}}">
+                    {{menu.text}}
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div notifications=""></div>
+        <div>
+            <div data-ng-view=""></div>
+        </div>
+    </div>
+</body>
+</html>
